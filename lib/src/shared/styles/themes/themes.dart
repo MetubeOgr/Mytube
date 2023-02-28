@@ -8,7 +8,7 @@ import 'colors.dart';
 class AppTheme {
   static ThemeData darkTheme = ThemeData(
     primaryColor: AppColor.primary,
-    brightness: Brightness.light,
+    colorScheme: AppColor().toColorScheme(true),
     scaffoldBackgroundColor: Colors.black,
     appBarTheme: AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(
@@ -29,8 +29,5 @@ class AppTheme {
       titleSmall: AppTypography.data.titleSmall,
       titleMedium: AppTypography.data.titleMedium,
     ),
-    buttonTheme: ButtonThemeData(buttonColor: AppColor.primary),
-    iconTheme: IconThemeData(color: AppColor.icon),
-    cardColor: AppColor.secondary,
   );
 }

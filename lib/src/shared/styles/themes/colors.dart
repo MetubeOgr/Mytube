@@ -20,4 +20,22 @@ class AppColor {
   static const Color icon = const Color(0xFFB6B6B6);
   static const Color active = const Color(0xFFFFFFFF);
   static const Color inactive = const Color(0xFF676363);
+
+  ColorScheme toColorScheme(bool isDark) {
+    ColorScheme colorScheme = ColorScheme(
+      brightness: isDark ? Brightness.dark : Brightness.light,
+      primary: primary,
+      onPrimary: onPrimary,
+      secondary: secondary,
+      onSecondary: onSecondary,
+      error: error,
+      onError: onError,
+      background: background,
+      onBackground: onBackground,
+      surface: background,
+      onSurface: onBackground,
+    );
+
+    return colorScheme;
+  }
 }
