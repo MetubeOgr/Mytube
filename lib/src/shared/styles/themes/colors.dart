@@ -17,6 +17,8 @@ class AppColor {
   static const Color error = const Color(0xFF8B0000);
   static const Color onError = const Color(0xFFFFFFFF);
 
+  static const Color lightGrey = const Color(0xFFC8C8C8);
+  static const Color darkGrey = const Color(0xFF5F5F5F);
   static const Color icon = const Color(0xFFB6B6B6);
   static const Color active = const Color(0xFFFFFFFF);
   static const Color inactive = const Color(0xFF676363);
