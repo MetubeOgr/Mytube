@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../shared/constrants/app_assests.dart';
-import '../shared/constrants/app_strings.dart';
+import '../shared/constants/app_assests.dart';
+import '../shared/constants/app_strings.dart';
 import '../shared/styles/themes/colors.dart';
 import '../widgets/common_button.dart';
 import '../widgets/facebook_button.dart';
@@ -36,7 +36,7 @@ class OnBoardingScreen extends StatelessWidget {
               AppStrings.subTitleIntro,
               textAlign: TextAlign.center,
               style: _theme.bodySmall?.apply(
-                color: AppColor.lightGrey,
+                color: AppColor.grey60,
               ),
             ),
             Padding(
@@ -45,7 +45,6 @@ class OnBoardingScreen extends StatelessWidget {
                 children: [
                   CommonRoundedButton(
                     title: AppStrings.logIn,
-                    height: 75,
                     minWidth: 150,
                     onPressed: () {
                       print('Login an account');
@@ -69,14 +68,14 @@ class OnBoardingScreen extends StatelessWidget {
             Text.rich(
               TextSpan(
                 text: AppStrings.dontHaveAccount,
-                style: _theme.bodySmall?.copyWith(color: AppColor.darkGrey),
+                style: _theme.bodySmall?.copyWith(color: AppColor.grey30),
                 children: [
                   WidgetSpan(
                     child: GestureDetector(
                       child: Text(
                         AppStrings.signUp,
                         style: _theme.titleMedium
-                            ?.copyWith(color: AppColor.lightGrey),
+                            ?.copyWith(color: AppColor.grey60),
                       ),
                       onTap: () {
                         print('Sign up');
