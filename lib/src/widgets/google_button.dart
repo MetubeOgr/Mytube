@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../shared/constrants/app_assests.dart';
+import '../shared/constants/app_assests.dart';
 
 class GoogleButton extends StatelessWidget {
   final Function()? onTap;
