@@ -17,7 +17,7 @@ class App extends StatelessWidget {
       title: 'MyTuBe',
       theme: AppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
-      initialRoute: RouteNames.onBoarding,
+      initialRoute: RouteNames.login,
       onGenerateRoute: AppRouter().pageRoutes,
     );
   }
