@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'app.dart';
 
 void main() {
-  runApp(DevicePreview(
-    enabled: !kReleaseMode,
-    builder: (context) => App(),
-  ));
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => App(),
+    ),
+  );
 }
