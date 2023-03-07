@@ -8,4 +8,6 @@ class AppStrings {
   static const String email = 'Email';
   static const String password = 'Password';
   static const String forgetPassword = 'Forget password ?';
+  static const String dotSymbol = '•';
+  static const String dotSymbolTablet = '●';
 }

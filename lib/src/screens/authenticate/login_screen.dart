@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mytubr/src/config/device_config.dart';
 import 'package:mytubr/src/shared/constants/app_strings.dart';
 import 'package:mytubr/src/shared/styles/themes/colors.dart';
-import 'package:mytubr/src/widgets/app_form_field.dart';
+import 'package:mytubr/src/widgets/app_text_form_field.dart';
 import 'package:mytubr/src/widgets/common_button.dart';
 
 import '../../shared/constants/app_assests.dart';
@@ -15,6 +16,45 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextTheme _textTheme = Theme.of(context).textTheme;
+    Size _appLogoSize = Size(0, 0);
+    var _screenContentPadding;
+    var _appLogoTopSpacing;
+    var _appLogoBottomSpacing;
+    var _emailFieldBottomSpacing;
+    var _passwordFieldBottomSpacing;
+    var _loginButtonTopSpacing;
+    var _loginButtonBottomSpacing;
+    var _betweenSocialButtonsSpacing;
+    var _socialButtonBottomSpacing;
+
+    switch (DeviceConfig.deviceScreenType) {
+      case DeviceScreenType.mobile:
+        _screenContentPadding = const EdgeInsets.symmetric(horizontal: 20);
+        _appLogoSize = Size(60, 60);
+        _appLogoTopSpacing = SizedBox(height: 42);
+
+        _appLogoBottomSpacing = SizedBox(height: 42);
+        _emailFieldBottomSpacing = const SizedBox(height: 15);
+        _passwordFieldBottomSpacing = const SizedBox(height: 20);
+        _loginButtonTopSpacing = const SizedBox(height: 29);
+        _loginButtonBottomSpacing = const SizedBox(height: 64);
+        _betweenSocialButtonsSpacing = const SizedBox(width: 55);
+        _socialButtonBottomSpacing = const SizedBox(height: 75);
+        break;
+      case DeviceScreenType.tablet:
+      case DeviceScreenType.desktop:
+        _screenContentPadding = const EdgeInsets.symmetric(horizontal: 100);
+        _appLogoSize = Size(100, 100);
+        _appLogoTopSpacing = SizedBox(height: 100);
+        _appLogoBottomSpacing = SizedBox(height: 60);
+        _emailFieldBottomSpacing = const SizedBox(height: 21);
+        _passwordFieldBottomSpacing = const SizedBox(height: 22);
+        _loginButtonTopSpacing = const SizedBox(height: 35);
+        _loginButtonBottomSpacing = const SizedBox(height: 72);
+        _betweenSocialButtonsSpacing = const SizedBox(width: 60);
+        _socialButtonBottomSpacing = const SizedBox(height: 82);
+        break;
+    }
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -24,48 +64,48 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: _screenContentPadding,
         children: [
+          _appLogoTopSpacing,
           SvgPicture.asset(
             AppAssets.youtubeLogo,
-            width: 60,
-            height: 60,
+            width: _appLogoSize.width,
+            height: _appLogoSize.height,
           ),
-          const SizedBox(height: 42),
+          _appLogoBottomSpacing,
           Form(
             child: Column(
               children: [
                 AppTextFormField(
                   hintText: AppStrings.email,
                   prefixIcon: SvgPicture.asset(AppAssets.email),
+                  onValidate: (String? input) {},
                 ),
-                const SizedBox(height: 15),
+                _emailFieldBottomSpacing,
                 AppTextFormField(
                   hintText: AppStrings.password,
                   prefixIcon: SvgPicture.asset(AppAssets.lock),
-                  suffixIcon: SvgPicture.asset(AppAssets.visible),
+                  isSecureText: true,
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 20),
+          _passwordFieldBottomSpacing,
           Align(
             alignment: Alignment.centerRight,
             child: Text(
               AppStrings.forgetPassword,
-              style: _textTheme.displaySmall?.apply(
-                color: AppColor.grey30,
-              ),
+              style: _textTheme.displaySmall?.apply(color: AppColor.grey30),
             ),
           ),
-          const SizedBox(height: 29),
+          _loginButtonTopSpacing,
           CommonRoundedButton(
             title: AppStrings.logIn,
             onPressed: () {
               print('Login an account');
             },
           ),
-          const SizedBox(height: 64),
+          _loginButtonBottomSpacing,
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -74,7 +114,7 @@ class LoginScreen extends StatelessWidget {
                   print('Login with Google');
                 },
               ),
-              const SizedBox(width: 55),
+              _betweenSocialButtonsSpacing,
               FacebookButton(
                 onTap: () {
                   print('Login with Facebook');
@@ -82,7 +122,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 75),
+          _socialButtonBottomSpacing,
           Text.rich(
             TextSpan(
               text: AppStrings.dontHaveAccount,
