@@ -14,7 +14,7 @@ class CommonRoundedButton extends StatelessWidget {
     super.key,
     required this.title,
     required this.onPressed,
-    this.height = 60,
+    this.height = 55,
     this.minWidth,
     this.titleStyle,
     this.boderRadius = 25,
