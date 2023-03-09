@@ -1,3 +1,4 @@
+/// A class contains all strings that is used in application.
 class AppStrings {
   static const String titleIntro = 'Welcome \nto best video app in wolrd';
   static const String subTitleIntro =
@@ -8,6 +9,6 @@ class AppStrings {
   static const String email = 'Email';
   static const String password = 'Password';
   static const String forgetPassword = 'Forget password ?';
-  static const String dotSymbol = '•';
-  static const String dotSymbolTablet = '●';
+  static const String dot = '•';
+  static const String dotTablet = '●';
 }

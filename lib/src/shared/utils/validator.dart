@@ -21,7 +21,7 @@ class Validator {
 
   static bool isValidEmaill(String email) => _emailRegExp.hasMatch(email);
 
-  static bool isPasswordAndConfirmMatch(
+  static bool isPasswordAndConfirmPassMatched(
           String password, String confirmPassword) =>
       password.compareTo(confirmPassword) == 0;
 }

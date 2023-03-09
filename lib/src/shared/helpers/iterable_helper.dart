@@ -1,5 +1,5 @@
 /// A class contains static functions to provide fast handle when working with
-/// collections, lists, etc.
+/// collections.
 class IterableHelper {
   static bool isNullOrEmpty({Iterable? iterable}) {
     return iterable == null || iterable.isEmpty;

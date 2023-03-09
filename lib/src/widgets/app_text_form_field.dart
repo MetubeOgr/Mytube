@@ -8,11 +8,15 @@ import '../config/device_config.dart';
 import '../shared/styles/custome_style.dart';
 import '../shared/styles/themes/colors.dart';
 
-/// Create a text field widget that is customed from [TextFormField].
+/// Create a text field widget that is customized from [TextFormField].
 ///
-/// Default [AppTextFormField]'s input border will define a [OutlineInputBorder],
-/// apply theme for hintTextStyle, textStyles, errorTextStyle
-/// and reponsive for mobile, tablet and desktop.
+/// Default [AppTextFormField]'s input border will define an [OutlineInputBorder],
+/// apply app theme for hintTextStyle, textStyles, and errorTextStyle,
+/// and be responsive for mobile, tablet, and desktop.
+///
+/// If [isSecureText] is true, input texting will be replaced to dot.
+/// It often apply for password field.
+/// And the trailing icon is applied to the open/close eye icon as the default icon.
 class AppTextFormField extends StatefulWidget {
   final TextEditingController? controller;
   final FocusNode? focusNode;
@@ -48,7 +52,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
   /// Else if it's false, trailing icon is close-eye-icon and text will be shown.
   bool isObscureText = false;
 
-  /// Handle event when user click trailing icon to hide/show text.
+  /// The function handle event when user click trailing icon to hide/show text.
   void onChangeStateInputText() {
     setState(() {
       isObscureText = !isObscureText;
@@ -70,7 +74,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
 
     switch (DeviceConfig.deviceScreenType) {
       case DeviceScreenType.mobile:
-        _obscuringCharacter = AppStrings.dotSymbol;
+        _obscuringCharacter = AppStrings.dot;
         _hindTextStyle = AppCustomeStyle.hindTextField;
         _inputTextStyle = Theme.of(context).textTheme.displaySmall;
         _textFieldBorder = OutlineInputBorder(
@@ -92,7 +96,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
         break;
       case DeviceScreenType.tablet:
       case DeviceScreenType.desktop:
-        _obscuringCharacter = AppStrings.dotSymbolTablet;
+        _obscuringCharacter = AppStrings.dotTablet;
         _hindTextStyle = AppCustomeStyle.hindTextFieldTablet;
         _inputTextStyle = Theme.of(context).textTheme.displayMedium;
         _textFieldBorder = OutlineInputBorder(

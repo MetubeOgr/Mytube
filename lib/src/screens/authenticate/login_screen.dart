@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mytubr/src/config/device_config.dart';
-import 'package:mytubr/src/shared/constants/app_strings.dart';
-import 'package:mytubr/src/shared/styles/themes/colors.dart';
-import 'package:mytubr/src/widgets/app_text_form_field.dart';
-import 'package:mytubr/src/widgets/common_button.dart';
 
+import '../../config/device_config.dart';
+import '../../shared/constants/app_strings.dart';
+import '../../shared/styles/themes/colors.dart';
+import '../../widgets/app_text_form_field.dart';
+import '../../widgets/common_button.dart';
 import '../../shared/constants/app_assests.dart';
 import '../../widgets/facebook_button.dart';
 import '../../widgets/google_button.dart';
