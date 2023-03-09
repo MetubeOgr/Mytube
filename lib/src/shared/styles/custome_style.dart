@@ -19,6 +19,13 @@ class AppCustomeStyle {
     color: Colors.white,
   );
 
+  static const TextStyle titleButtonTablet = TextStyle(
+    fontFamily: 'ProductSans-Bold',
+    fontSize: 26,
+    height: 24.26 / 20,
+    color: Colors.white,
+  );
+
   static const TextStyle hindTextField = TextStyle(
     fontFamily: 'ProductSans-Regular',
     fontSize: 18,
@@ -41,5 +48,13 @@ class AppCustomeStyle {
     height: 16 / 14,
     fontWeight: FontWeight.w700,
     color: AppColor.error,
+  );
+
+  static const TextStyle displayLargeTablet = TextStyle(
+    fontFamily: 'ProductSans-Bold',
+    fontSize: 30,
+    height: 29.11 / 24,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
   );
 }
