@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../config/device_config.dart';
 import '../shared/constants/app_assests.dart';
 import '../shared/constants/app_strings.dart';
-import '../config/device_config.dart';
 import '../shared/styles/custome_style.dart';
 import '../shared/styles/themes/colors.dart';
 
@@ -50,7 +50,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
   /// If [isObscureText] is true, trailing icon is open-eye-icon and text is
   /// entered that will replace to obscuringCharacter.
   /// Else if it's false, trailing icon is close-eye-icon and text will be shown.
-  bool isObscureText = false;
+  bool isObscureText = true;
 
   /// The function handle event when user click trailing icon to hide/show text.
   void onChangeStateInputText() {
@@ -74,7 +74,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
 
     switch (DeviceConfig.deviceScreenType) {
       case DeviceScreenType.mobile:
-        _obscuringCharacter = AppStrings.dot;
+        _obscuringCharacter = LoginStrings.dot;
         _hindTextStyle = AppCustomeStyle.hindTextField;
         _inputTextStyle = Theme.of(context).textTheme.displaySmall;
         _textFieldBorder = OutlineInputBorder(
@@ -96,7 +96,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
         break;
       case DeviceScreenType.tablet:
       case DeviceScreenType.desktop:
-        _obscuringCharacter = AppStrings.dotTablet;
+        _obscuringCharacter = LoginStrings.dotTablet;
         _hindTextStyle = AppCustomeStyle.hindTextFieldTablet;
         _inputTextStyle = Theme.of(context).textTheme.displayMedium;
         _textFieldBorder = OutlineInputBorder(

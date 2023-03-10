@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 import '../config/device_config.dart';
@@ -42,7 +40,7 @@ class CommonRoundedButton extends StatelessWidget {
         break;
     }
     return MaterialButton(
-      onPressed: () {},
+      onPressed: onPressed,
       height: height ?? _defaultHeight,
       minWidth: minWidth,
       child: Text(

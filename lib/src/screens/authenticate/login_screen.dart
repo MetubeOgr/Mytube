@@ -17,6 +17,9 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextTheme _textTheme = Theme.of(context).textTheme;
     Size _appLogoSize = Size(0, 0);
+    double? _leadingWidth;
+    double? _appBarHeight;
+    double? _backIconSize;
     var _screenContentPadding;
     var _appLogoTopSpacing;
     var _appLogoBottomSpacing;
@@ -32,8 +35,10 @@ class LoginScreen extends StatelessWidget {
         _screenContentPadding = const EdgeInsets.symmetric(horizontal: 20);
         _appLogoSize = Size(60, 60);
         _appLogoTopSpacing = SizedBox(height: 42);
-
         _appLogoBottomSpacing = SizedBox(height: 42);
+        _leadingWidth = 50;
+        _appBarHeight = 50;
+        _backIconSize = 25;
         _emailFieldBottomSpacing = const SizedBox(height: 15);
         _passwordFieldBottomSpacing = const SizedBox(height: 20);
         _loginButtonTopSpacing = const SizedBox(height: 29);
@@ -47,6 +52,9 @@ class LoginScreen extends StatelessWidget {
         _appLogoSize = Size(100, 100);
         _appLogoTopSpacing = SizedBox(height: 100);
         _appLogoBottomSpacing = SizedBox(height: 60);
+        _leadingWidth = 100;
+        _appBarHeight = 100;
+        _backIconSize = 35;
         _emailFieldBottomSpacing = const SizedBox(height: 21);
         _passwordFieldBottomSpacing = const SizedBox(height: 22);
         _loginButtonTopSpacing = const SizedBox(height: 35);
@@ -57,10 +65,19 @@ class LoginScreen extends StatelessWidget {
     }
     return Scaffold(
       appBar: AppBar(
+        leadingWidth: _leadingWidth,
+        toolbarHeight: _appBarHeight,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_rounded),
+          icon: Icon(
+            Icons.arrow_back_ios_new_rounded,
+            size: _backIconSize,
+          ),
           color: AppColor.icon,
-          onPressed: () {},
+          onPressed: () {
+            if (Navigator.canPop(context)) {
+              Navigator.pop(context);
+            }
+          },
         ),
       ),
       body: ListView(
@@ -77,13 +94,13 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               children: [
                 AppTextFormField(
-                  hintText: AppStrings.email,
+                  hintText: LoginStrings.email,
                   prefixIcon: SvgPicture.asset(AppAssets.email),
                   onValidate: (String? input) {},
                 ),
                 _emailFieldBottomSpacing,
                 AppTextFormField(
-                  hintText: AppStrings.password,
+                  hintText: LoginStrings.password,
                   prefixIcon: SvgPicture.asset(AppAssets.lock),
                   isSecureText: true,
                 ),
@@ -94,13 +111,13 @@ class LoginScreen extends StatelessWidget {
           Align(
             alignment: Alignment.centerRight,
             child: Text(
-              AppStrings.forgetPassword,
+              LoginStrings.forgetPassword,
               style: _textTheme.displaySmall?.apply(color: AppColor.grey30),
             ),
           ),
           _loginButtonTopSpacing,
           CommonRoundedButton(
-            title: AppStrings.logIn,
+            title: LoginStrings.logIn,
             onPressed: () {
               print('Login an account');
             },
@@ -125,13 +142,13 @@ class LoginScreen extends StatelessWidget {
           _socialButtonBottomSpacing,
           Text.rich(
             TextSpan(
-              text: AppStrings.dontHaveAccount,
+              text: LoginStrings.dontHaveAccount,
               style: _textTheme.bodySmall?.apply(color: AppColor.grey30),
               children: [
                 WidgetSpan(
                   child: GestureDetector(
                     child: Text(
-                      AppStrings.signUp,
+                      LoginStrings.signUp,
                       style:
                           _textTheme.titleMedium?.apply(color: AppColor.grey60),
                     ),

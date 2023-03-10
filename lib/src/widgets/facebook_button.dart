@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../config/device_config.dart';
 
+import '../config/device_config.dart';
 import '../shared/constants/app_assests.dart';
 
 class FacebookButton extends StatelessWidget {
