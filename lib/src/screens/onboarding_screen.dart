@@ -89,7 +89,7 @@ class OnBoardingScreen extends StatelessWidget {
                     title: OnBoardingStrings.logIn,
                     minWidth: _loginButtonWidth,
                     onPressed: () =>
-                        Navigator.pushNamed(context, RouteNames.login),
+                        Navigator.pushNamed(context, RouteNames.logIn),
                   ),
                   const Spacer(),
                   GoogleButton(
@@ -118,9 +118,8 @@ class OnBoardingScreen extends StatelessWidget {
                         OnBoardingStrings.signUp,
                         style: _signUpStyle,
                       ),
-                      onTap: () {
-                        print('Sign up');
-                      },
+                      onTap: () =>
+                          Navigator.pushNamed(context, RouteNames.signUp),
                     ),
                   )
                 ],

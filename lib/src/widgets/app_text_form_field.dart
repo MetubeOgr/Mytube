@@ -74,7 +74,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
 
     switch (DeviceConfig.deviceScreenType) {
       case DeviceScreenType.mobile:
-        _obscuringCharacter = LoginStrings.dot;
+        _obscuringCharacter = AuthenticateStrings.dot;
         _hindTextStyle = AppCustomeStyle.hindTextField;
         _inputTextStyle = Theme.of(context).textTheme.displaySmall;
         _textFieldBorder = OutlineInputBorder(
@@ -96,7 +96,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
         break;
       case DeviceScreenType.tablet:
       case DeviceScreenType.desktop:
-        _obscuringCharacter = LoginStrings.dotTablet;
+        _obscuringCharacter = AuthenticateStrings.dotTablet;
         _hindTextStyle = AppCustomeStyle.hindTextFieldTablet;
         _inputTextStyle = Theme.of(context).textTheme.displayMedium;
         _textFieldBorder = OutlineInputBorder(
