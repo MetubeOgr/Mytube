@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mytubr/src/shared/navigation/route_name.dart';
 
 import '../../config/device_config.dart';
 import '../../shared/constants/app_strings.dart';
+import '../../shared/navigation/route_name.dart';
 import '../../shared/styles/themes/colors.dart';
 import '../../widgets/app_text_form_field.dart';
 import '../../widgets/common_button.dart';
@@ -21,6 +21,7 @@ class SignUpScreen extends StatelessWidget {
     double? _leadingWidth;
     double? _appBarHeight;
     double? _backIconSize;
+    double _screenBottomSpacing;
     var _screenContentPadding;
     var _appLogoTopSpacing;
     var _appLogoBottomSpacing;
@@ -34,11 +35,12 @@ class SignUpScreen extends StatelessWidget {
       case DeviceScreenType.mobile:
         _screenContentPadding = const EdgeInsets.symmetric(horizontal: 20);
         _appLogoSize = Size(60, 60);
-        _appLogoTopSpacing = SizedBox(height: 42);
-        _appLogoBottomSpacing = SizedBox(height: 42);
+        _appLogoTopSpacing = SizedBox(height: 45);
+        _appLogoBottomSpacing = SizedBox(height: 35);
         _leadingWidth = 50;
         _appBarHeight = 50;
         _backIconSize = 25;
+        _screenBottomSpacing = 30;
         _textFieldSpacing = const SizedBox(height: 15);
         _loginButtonTopSpacing = const SizedBox(height: 29);
         _loginButtonBottomSpacing = const SizedBox(height: 64);
@@ -54,6 +56,7 @@ class SignUpScreen extends StatelessWidget {
         _leadingWidth = 100;
         _appBarHeight = 100;
         _backIconSize = 35;
+        _screenBottomSpacing = 30;
         _textFieldSpacing = const SizedBox(height: 21);
         _loginButtonTopSpacing = const SizedBox(height: 35);
         _loginButtonBottomSpacing = const SizedBox(height: 72);
@@ -161,6 +164,7 @@ class SignUpScreen extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
+          SizedBox(height: _screenBottomSpacing)
         ],
       ),
     );

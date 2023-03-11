@@ -25,6 +25,7 @@ class AppTextFormField extends StatefulWidget {
   final Widget? prefixIcon;
   final List<TextInputFormatter>? inputFormatter;
   final TextInputAction? inputAction;
+  final TextInputType? keyboardType;
   final bool isSecureText;
   final String? Function(String? str)? onValidate;
   final void Function(String? str)? onCompleted;
@@ -36,6 +37,7 @@ class AppTextFormField extends StatefulWidget {
     this.errorText,
     this.prefixIcon,
     this.inputFormatter,
+    this.keyboardType,
     this.inputAction,
     this.isSecureText = false,
     this.onValidate,
@@ -68,7 +70,6 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
     double _fieldHeight;
     var _preffixIconSize;
     var _suffixIconSize;
-    var _contentPadding;
     var _preffixIconPadding;
     var _suffixIconPadding;
 
@@ -82,13 +83,10 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
             color: AppColor.grey30,
             width: 1.5,
           ),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(18),
         );
         _fieldHeight = widget.errorText != null ? 80 : 55;
-        _contentPadding = const EdgeInsets.symmetric(
-          vertical: 22,
-          horizontal: 10,
-        );
+
         _preffixIconSize = Size(45, 45);
         _preffixIconPadding = const EdgeInsets.symmetric(horizontal: 10);
         _suffixIconSize = Size(45, 45);
@@ -107,10 +105,6 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
           borderRadius: BorderRadius.circular(25),
         );
         _fieldHeight = widget.errorText != null ? 85 : 65;
-        _contentPadding = const EdgeInsets.symmetric(
-          vertical: 22,
-          horizontal: 20,
-        );
         _preffixIconSize = Size(72, 45);
         _preffixIconPadding = const EdgeInsets.symmetric(horizontal: 20);
         _suffixIconSize = Size(72, 45);
@@ -125,10 +119,11 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
       obscuringCharacter: _obscuringCharacter,
       keyboardAppearance: Brightness.dark,
       textInputAction: widget.inputAction,
+      keyboardType: widget.keyboardType,
       decoration: InputDecoration(
         isDense: true,
         constraints: BoxConstraints.tightForFinite(height: _fieldHeight),
-        contentPadding: _contentPadding,
+        // contentPadding: _contentPadding,
         hintText: widget.hintText,
         hintStyle: _hindTextStyle,
         errorText: widget.errorText,

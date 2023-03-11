@@ -35,8 +35,8 @@ class LoginScreen extends StatelessWidget {
       case DeviceScreenType.mobile:
         _screenContentPadding = const EdgeInsets.symmetric(horizontal: 20);
         _appLogoSize = Size(60, 60);
-        _appLogoTopSpacing = SizedBox(height: 42);
-        _appLogoBottomSpacing = SizedBox(height: 42);
+        _appLogoTopSpacing = SizedBox(height: 45);
+        _appLogoBottomSpacing = SizedBox(height: 35);
         _leadingWidth = 50;
         _appBarHeight = 50;
         _backIconSize = 25;
