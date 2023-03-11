@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../screens/authenticate/login_screen.dart';
+import '../../screens/authenticate/sign_up_screen.dart';
 import '../../screens/not_found_screen.dart';
 import '../../screens/onboarding_screen.dart';
 import 'route_name.dart';
@@ -12,8 +13,10 @@ class AppRouter {
         switch (settings.name) {
           case RouteNames.onBoarding:
             return OnBoardingScreen();
-          case RouteNames.login:
+          case RouteNames.logIn:
             return LoginScreen();
+          case RouteNames.signUp:
+            return SignUpScreen();
           default:
             return NotFoundScreen();
         }

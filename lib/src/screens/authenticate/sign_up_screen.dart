@@ -2,33 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../config/device_config.dart';
-import '../../shared/constants/app_assests.dart';
 import '../../shared/constants/app_strings.dart';
 import '../../shared/navigation/route_name.dart';
 import '../../shared/styles/themes/colors.dart';
 import '../../widgets/app_text_form_field.dart';
 import '../../widgets/common_button.dart';
+import '../../shared/constants/app_assests.dart';
 import '../../widgets/facebook_button.dart';
 import '../../widgets/google_button.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final TextTheme _textTheme = Theme.of(context).textTheme;
-    TextStyle? _prefixSignUpLinkStyle;
-    TextStyle? _signUpLinkStyle;
-    TextStyle? _forgotPasswordTextStyle;
-    Size? _appLogoSize;
+    TextStyle? _prefixLoginLinkStyle;
+    TextStyle? _loginLinkStyle;
+    Size _appLogoSize = Size(0, 0);
     double? _leadingWidth;
     double? _appBarHeight;
     double? _backIconSize;
+    double _screenBottomSpacing;
     var _screenContentPadding;
     var _appLogoTopSpacing;
     var _appLogoBottomSpacing;
-    var _emailFieldBottomSpacing;
-    var _passwordFieldBottomSpacing;
+    var _textFieldSpacing;
     var _loginButtonTopSpacing;
     var _loginButtonBottomSpacing;
     var _betweenSocialButtonsSpacing;
@@ -36,21 +35,19 @@ class LoginScreen extends StatelessWidget {
 
     switch (DeviceConfig.deviceScreenType) {
       case DeviceScreenType.mobile:
-        _screenContentPadding = const EdgeInsets.symmetric(horizontal: 20);
-        _prefixSignUpLinkStyle =
+        _prefixLoginLinkStyle =
             _textTheme.bodySmall?.apply(color: AppColor.grey30);
-        _signUpLinkStyle =
-            _textTheme.titleMedium?.apply(color: AppColor.grey60);
-        _forgotPasswordTextStyle =
-            _textTheme.displaySmall?.apply(color: AppColor.grey30);
+        _loginLinkStyle = _textTheme.titleMedium?.apply(color: AppColor.grey60);
+
+        _screenContentPadding = const EdgeInsets.symmetric(horizontal: 20);
         _appLogoSize = Size(60, 60);
         _appLogoTopSpacing = SizedBox(height: 45);
         _appLogoBottomSpacing = SizedBox(height: 35);
         _leadingWidth = 50;
         _appBarHeight = 50;
         _backIconSize = 25;
-        _emailFieldBottomSpacing = const SizedBox(height: 15);
-        _passwordFieldBottomSpacing = const SizedBox(height: 20);
+        _screenBottomSpacing = 30;
+        _textFieldSpacing = const SizedBox(height: 15);
         _loginButtonTopSpacing = const SizedBox(height: 29);
         _loginButtonBottomSpacing = const SizedBox(height: 64);
         _betweenSocialButtonsSpacing = const SizedBox(width: 55);
@@ -58,25 +55,24 @@ class LoginScreen extends StatelessWidget {
         break;
       case DeviceScreenType.tablet:
       case DeviceScreenType.desktop:
-        _screenContentPadding = const EdgeInsets.symmetric(horizontal: 100);
-        _prefixSignUpLinkStyle =
+        _prefixLoginLinkStyle =
             _textTheme.displayMedium?.apply(color: AppColor.grey30);
-        _signUpLinkStyle =
+        _loginLinkStyle =
             _textTheme.displayMedium?.apply(color: AppColor.grey60);
-        _forgotPasswordTextStyle =
-            _textTheme.displayMedium?.apply(color: AppColor.grey30);
+
+        _screenContentPadding = const EdgeInsets.symmetric(horizontal: 100);
         _appLogoSize = Size(100, 100);
         _appLogoTopSpacing = SizedBox(height: 100);
         _appLogoBottomSpacing = SizedBox(height: 60);
         _leadingWidth = 100;
         _appBarHeight = 100;
         _backIconSize = 35;
-        _emailFieldBottomSpacing = const SizedBox(height: 21);
-        _passwordFieldBottomSpacing = const SizedBox(height: 22);
+        _screenBottomSpacing = 30;
+        _textFieldSpacing = const SizedBox(height: 21);
         _loginButtonTopSpacing = const SizedBox(height: 35);
         _loginButtonBottomSpacing = const SizedBox(height: 72);
         _betweenSocialButtonsSpacing = const SizedBox(width: 60);
-        _socialButtonBottomSpacing = const SizedBox(height: 82);
+        _socialButtonBottomSpacing = const SizedBox(height: 150);
         break;
     }
     return Scaffold(
@@ -97,7 +93,6 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
       body: ListView(
-        shrinkWrap: true,
         padding: _screenContentPadding,
         children: [
           _appLogoTopSpacing,
@@ -111,29 +106,32 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               children: [
                 AppTextFormField(
+                  hintText: AuthenticateStrings.fullName,
+                  prefixIcon: SvgPicture.asset(AppAssets.user),
+                ),
+                _textFieldSpacing,
+                AppTextFormField(
                   hintText: AuthenticateStrings.email,
                   prefixIcon: SvgPicture.asset(AppAssets.email),
                 ),
-                _emailFieldBottomSpacing,
+                _textFieldSpacing,
                 AppTextFormField(
                   hintText: AuthenticateStrings.password,
+                  prefixIcon: SvgPicture.asset(AppAssets.lock),
+                  isSecureText: true,
+                ),
+                _textFieldSpacing,
+                AppTextFormField(
+                  hintText: AuthenticateStrings.repeatPassword,
                   prefixIcon: SvgPicture.asset(AppAssets.lock),
                   isSecureText: true,
                 ),
               ],
             ),
           ),
-          _passwordFieldBottomSpacing,
-          Align(
-            alignment: Alignment.centerRight,
-            child: Text(
-              AuthenticateStrings.forgetPassword,
-              style: _forgotPasswordTextStyle,
-            ),
-          ),
           _loginButtonTopSpacing,
           CommonRoundedButton(
-            title: AuthenticateStrings.logIn,
+            title: AuthenticateStrings.signUp,
             onPressed: () {
               print('Login an account');
             },
@@ -158,20 +156,17 @@ class LoginScreen extends StatelessWidget {
           _socialButtonBottomSpacing,
           Text.rich(
             TextSpan(
-              text: AuthenticateStrings.dontHaveAccountLabel,
-              style: _prefixSignUpLinkStyle,
+              text: AuthenticateStrings.haveAccountLabel,
+              style: _prefixLoginLinkStyle,
               children: [
                 WidgetSpan(
                   child: GestureDetector(
                     child: Text(
-                      AuthenticateStrings.signUp,
-                      style: _signUpLinkStyle,
+                      AuthenticateStrings.logIn,
+                      style: _loginLinkStyle,
                     ),
                     onTap: () {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        RouteNames.signUp,
-                      );
+                      Navigator.pushReplacementNamed(context, RouteNames.logIn);
                     },
                   ),
                 )
@@ -179,6 +174,7 @@ class LoginScreen extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
+          SizedBox(height: _screenBottomSpacing)
         ],
       ),
     );

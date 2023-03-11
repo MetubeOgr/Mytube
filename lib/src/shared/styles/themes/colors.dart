@@ -21,6 +21,7 @@ class AppColor {
   static const Color grey30 = const Color(0xFF5F5F5F);
   static const Color icon = const Color(0xFFB6B6B6);
   static const Color active = const Color(0xFFFFFFFF);
+  static const Color cursorColor = const Color(0xFFFFFFFF);
   static const Color inactive = const Color(0xFF676363);
 
   ColorScheme toColorScheme(bool isDark) {
