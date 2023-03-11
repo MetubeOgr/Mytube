@@ -17,6 +17,8 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextTheme _textTheme = Theme.of(context).textTheme;
+    TextStyle? _prefixLoginLinkStyle;
+    TextStyle? _loginLinkStyle;
     Size _appLogoSize = Size(0, 0);
     double? _leadingWidth;
     double? _appBarHeight;
@@ -33,6 +35,10 @@ class SignUpScreen extends StatelessWidget {
 
     switch (DeviceConfig.deviceScreenType) {
       case DeviceScreenType.mobile:
+        _prefixLoginLinkStyle =
+            _textTheme.bodySmall?.apply(color: AppColor.grey30);
+        _loginLinkStyle = _textTheme.titleMedium?.apply(color: AppColor.grey60);
+
         _screenContentPadding = const EdgeInsets.symmetric(horizontal: 20);
         _appLogoSize = Size(60, 60);
         _appLogoTopSpacing = SizedBox(height: 45);
@@ -49,6 +55,11 @@ class SignUpScreen extends StatelessWidget {
         break;
       case DeviceScreenType.tablet:
       case DeviceScreenType.desktop:
+        _prefixLoginLinkStyle =
+            _textTheme.displayMedium?.apply(color: AppColor.grey30);
+        _loginLinkStyle =
+            _textTheme.displayMedium?.apply(color: AppColor.grey60);
+
         _screenContentPadding = const EdgeInsets.symmetric(horizontal: 100);
         _appLogoSize = Size(100, 100);
         _appLogoTopSpacing = SizedBox(height: 100);
@@ -61,7 +72,7 @@ class SignUpScreen extends StatelessWidget {
         _loginButtonTopSpacing = const SizedBox(height: 35);
         _loginButtonBottomSpacing = const SizedBox(height: 72);
         _betweenSocialButtonsSpacing = const SizedBox(width: 60);
-        _socialButtonBottomSpacing = const SizedBox(height: 82);
+        _socialButtonBottomSpacing = const SizedBox(height: 150);
         break;
     }
     return Scaffold(
@@ -146,14 +157,13 @@ class SignUpScreen extends StatelessWidget {
           Text.rich(
             TextSpan(
               text: AuthenticateStrings.haveAccountLabel,
-              style: _textTheme.bodySmall?.apply(color: AppColor.grey30),
+              style: _prefixLoginLinkStyle,
               children: [
                 WidgetSpan(
                   child: GestureDetector(
                     child: Text(
                       AuthenticateStrings.logIn,
-                      style:
-                          _textTheme.titleMedium?.apply(color: AppColor.grey60),
+                      style: _loginLinkStyle,
                     ),
                     onTap: () {
                       Navigator.pushReplacementNamed(context, RouteNames.logIn);

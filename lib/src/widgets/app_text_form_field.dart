@@ -86,7 +86,6 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
           borderRadius: BorderRadius.circular(18),
         );
         _fieldHeight = widget.errorText != null ? 80 : 55;
-
         _preffixIconSize = Size(45, 45);
         _preffixIconPadding = const EdgeInsets.symmetric(horizontal: 10);
         _suffixIconSize = Size(45, 45);
@@ -102,10 +101,10 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
             color: AppColor.grey30,
             width: 2,
           ),
-          borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(20),
         );
         _fieldHeight = widget.errorText != null ? 85 : 65;
-        _preffixIconSize = Size(72, 45);
+        _preffixIconSize = Size(75, 75);
         _preffixIconPadding = const EdgeInsets.symmetric(horizontal: 20);
         _suffixIconSize = Size(72, 45);
         _suffixIconPadding = const EdgeInsets.symmetric(horizontal: 20);
@@ -123,7 +122,6 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
       decoration: InputDecoration(
         isDense: true,
         constraints: BoxConstraints.tightForFinite(height: _fieldHeight),
-        // contentPadding: _contentPadding,
         hintText: widget.hintText,
         hintStyle: _hindTextStyle,
         errorText: widget.errorText,
@@ -140,7 +138,8 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
                 child: Padding(
                   padding: _suffixIconPadding,
                   child: SvgPicture.asset(
-                      isObscureText ? AppAssets.invisible : AppAssets.visible),
+                    isObscureText ? AppAssets.invisible : AppAssets.visible,
+                  ),
                 ),
               )
             : null,

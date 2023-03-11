@@ -34,8 +34,8 @@ class CommonRoundedButton extends StatelessWidget {
         break;
       case DeviceScreenType.tablet:
       case DeviceScreenType.desktop:
-        _defaultHeight = 75;
-        _defaultBoderRadius = 30;
+        _defaultHeight = 70;
+        _defaultBoderRadius = 23;
         _defaultTitleStyle = AppCustomeStyle.titleButtonTablet;
         break;
     }

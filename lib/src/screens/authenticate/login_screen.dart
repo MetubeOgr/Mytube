@@ -17,7 +17,10 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextTheme _textTheme = Theme.of(context).textTheme;
-    Size _appLogoSize = Size(0, 0);
+    TextStyle? _prefixSignUpLinkStyle;
+    TextStyle? _signUpLinkStyle;
+    TextStyle? _forgotPasswordTextStyle;
+    Size? _appLogoSize;
     double? _leadingWidth;
     double? _appBarHeight;
     double? _backIconSize;
@@ -34,6 +37,12 @@ class LoginScreen extends StatelessWidget {
     switch (DeviceConfig.deviceScreenType) {
       case DeviceScreenType.mobile:
         _screenContentPadding = const EdgeInsets.symmetric(horizontal: 20);
+        _prefixSignUpLinkStyle =
+            _textTheme.bodySmall?.apply(color: AppColor.grey30);
+        _signUpLinkStyle =
+            _textTheme.titleMedium?.apply(color: AppColor.grey60);
+        _forgotPasswordTextStyle =
+            _textTheme.displaySmall?.apply(color: AppColor.grey30);
         _appLogoSize = Size(60, 60);
         _appLogoTopSpacing = SizedBox(height: 45);
         _appLogoBottomSpacing = SizedBox(height: 35);
@@ -50,6 +59,12 @@ class LoginScreen extends StatelessWidget {
       case DeviceScreenType.tablet:
       case DeviceScreenType.desktop:
         _screenContentPadding = const EdgeInsets.symmetric(horizontal: 100);
+        _prefixSignUpLinkStyle =
+            _textTheme.displayMedium?.apply(color: AppColor.grey30);
+        _signUpLinkStyle =
+            _textTheme.displayMedium?.apply(color: AppColor.grey60);
+        _forgotPasswordTextStyle =
+            _textTheme.displayMedium?.apply(color: AppColor.grey30);
         _appLogoSize = Size(100, 100);
         _appLogoTopSpacing = SizedBox(height: 100);
         _appLogoBottomSpacing = SizedBox(height: 60);
@@ -82,6 +97,7 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
       body: ListView(
+        shrinkWrap: true,
         padding: _screenContentPadding,
         children: [
           _appLogoTopSpacing,
@@ -97,7 +113,6 @@ class LoginScreen extends StatelessWidget {
                 AppTextFormField(
                   hintText: AuthenticateStrings.email,
                   prefixIcon: SvgPicture.asset(AppAssets.email),
-                  onValidate: (String? input) {},
                 ),
                 _emailFieldBottomSpacing,
                 AppTextFormField(
@@ -113,7 +128,7 @@ class LoginScreen extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: Text(
               AuthenticateStrings.forgetPassword,
-              style: _textTheme.displaySmall?.apply(color: AppColor.grey30),
+              style: _forgotPasswordTextStyle,
             ),
           ),
           _loginButtonTopSpacing,
@@ -144,14 +159,13 @@ class LoginScreen extends StatelessWidget {
           Text.rich(
             TextSpan(
               text: AuthenticateStrings.dontHaveAccountLabel,
-              style: _textTheme.bodySmall?.apply(color: AppColor.grey30),
+              style: _prefixSignUpLinkStyle,
               children: [
                 WidgetSpan(
                   child: GestureDetector(
                     child: Text(
                       AuthenticateStrings.signUp,
-                      style:
-                          _textTheme.titleMedium?.apply(color: AppColor.grey60),
+                      style: _signUpLinkStyle,
                     ),
                     onTap: () {
                       Navigator.pushReplacementNamed(
