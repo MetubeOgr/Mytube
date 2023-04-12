@@ -133,7 +133,8 @@ class SignUpScreen extends StatelessWidget {
           CommonRoundedButton(
             title: AuthenticateStrings.signUp,
             onPressed: () {
-              print('Login an account');
+              Navigator.pushNamedAndRemoveUntil(context, RouteNames.home,
+                  (route) => route.settings.name == RouteNames.init);
             },
           ),
           _loginButtonBottomSpacing,
