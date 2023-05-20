@@ -135,7 +135,8 @@ class LoginScreen extends StatelessWidget {
           CommonRoundedButton(
             title: AuthenticateStrings.logIn,
             onPressed: () {
-              print('Login an account');
+              Navigator.pushNamedAndRemoveUntil(context, RouteNames.home,
+                  (route) => route.settings.name == RouteNames.init);
             },
           ),
           _loginButtonBottomSpacing,
