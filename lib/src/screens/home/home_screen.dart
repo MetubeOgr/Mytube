@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../shared/constants/app_assests.dart';
+import '../../shared/constants/app_assests.dart';
+import '../../widgets/app_circle_avatar.dart';
+import 'widgets/channel_followed_list.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -42,16 +44,22 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         actions: [
-          CircleAvatar(
-            backgroundImage: AssetImage(AppAssets.avatar_1),
-            radius: 23,
+          Align(
+            alignment: Alignment.center,
+            child: AppCircleAvatar(
+              backgroundImage: AssetImage(AppAssets.avatar_1),
+              onTapped: () {
+                /// TODO: Implement event click
+              },
+            ),
           ),
           const SizedBox(width: 10),
         ],
       ),
-      body: Container(
-        alignment: Alignment.center,
-        child: Text('HomeScreen'),
+      body: Column(
+        children: [
+          ChannelFollowedList(),
+        ],
       ),
     );
   }
