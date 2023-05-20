@@ -1,3 +1,5 @@
+class GlobalStings {}
+
 class OnBoardingStrings {
   static const String titleIntro = 'Welcome \nto best video app in wolrd';
   static const String subTitleIntro =
@@ -20,3 +22,5 @@ class AuthenticateStrings {
   static const String dot = '•';
   static const String dotTablet = '●';
 }
+
+class HomeStrings {}

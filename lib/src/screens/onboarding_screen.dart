@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../shared/navigation/route_name.dart';
-import '../shared/styles/custome_style.dart';
 import '../config/device_config.dart';
 import '../shared/constants/app_assests.dart';
 import '../shared/constants/app_strings.dart';
+import '../shared/navigation/route_name.dart';
+import '../shared/styles/custome_style.dart';
 import '../shared/styles/themes/colors.dart';
 import '../widgets/common_button.dart';
 import '../widgets/facebook_button.dart';
