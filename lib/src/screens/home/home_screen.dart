@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mytubr/src/config/device_config.dart';
+import '../../config/device_config.dart';
 
 import '../../shared/constants/app_assests.dart';
 import '../../widgets/app_circle_avatar.dart';

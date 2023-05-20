@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'themes/colors.dart';
 
 /// This class will define text styles that is not really declared

@@ -1,7 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'src/config/device_config.dart';
 
+import 'src/config/device_config.dart';
 import 'src/shared/navigation/route_controller.dart';
 import 'src/shared/navigation/route_name.dart';
 import 'src/shared/styles/themes/themes.dart';
