@@ -22,12 +22,16 @@ class ChannelFollowedList extends StatelessWidget {
       case DeviceScreenType.desktop:
       case DeviceScreenType.tablet:
         avatarImgSize = 30.0;
+        avatarImgPadding = const EdgeInsetsDirectional.symmetric(
+          horizontal: 10,
+          vertical: 20,
+        );
         break;
     }
     return Flexible(
       flex: 1,
       child: ListView.builder(
-        itemCount: 10,
+        itemCount: 15,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => AppCircleAvatar(
           padding: avatarImgPadding,

@@ -18,13 +18,10 @@ class AppCircleAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var activeWidget = isActive
-        ? Container(
-            decoration: BoxDecoration(
-              color: Colors.green,
-              shape: BoxShape.circle,
-            ),
-            height: size / 2,
-            width: size / 2,
+        ? Icon(
+            Icons.circle,
+            color: Colors.green,
+            size: size / 2,
           )
         : const SizedBox.shrink();
     return Padding(
