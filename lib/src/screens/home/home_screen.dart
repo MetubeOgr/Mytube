@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../config/device_config.dart';
 
+import '../../config/device_config.dart';
 import '../../shared/constants/app_assests.dart';
 import '../../widgets/app_circle_avatar.dart';
 import 'widgets/channel_followed_list.dart';
+import 'widgets/trend_keyword_list.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -50,38 +51,36 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         leadingWidth: _leadingWith,
-        title: Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Padding(
-                padding: _appBarIconPadding,
-                child: InkWell(
-                  child: SvgPicture.asset(
-                    AppAssets.search,
-                    height: _defaultAppBarIconSize.height,
-                    width: _defaultAppBarIconSize.width,
-                  ),
-                  onTap: () {
-                    /// TODO: Handle event when user click
-                  },
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Padding(
+              padding: _appBarIconPadding,
+              child: InkWell(
+                child: SvgPicture.asset(
+                  AppAssets.search,
+                  height: _defaultAppBarIconSize.height,
+                  width: _defaultAppBarIconSize.width,
                 ),
+                onTap: () {
+                  /// TODO: Handle event when user click
+                },
               ),
-              Padding(
-                padding: _appBarIconPadding,
-                child: InkWell(
-                  child: SvgPicture.asset(
-                    AppAssets.notification,
-                    height: _defaultAppBarIconSize.height,
-                    width: _defaultAppBarIconSize.width,
-                  ),
-                  onTap: () {
-                    /// TODO: Handle event when user click
-                  },
+            ),
+            Padding(
+              padding: _appBarIconPadding,
+              child: InkWell(
+                child: SvgPicture.asset(
+                  AppAssets.notification,
+                  height: _defaultAppBarIconSize.height,
+                  width: _defaultAppBarIconSize.width,
                 ),
+                onTap: () {
+                  /// TODO: Handle event when user click
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         actions: [
           Align(
@@ -100,6 +99,7 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         children: [
           ChannelFollowedList(),
+          TrendKeywordList(),
         ],
       ),
     );
